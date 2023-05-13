@@ -6,7 +6,7 @@
 #    By: hael-mou <hael-mou@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 09:39:34 by hael-mou          #+#    #+#              #
-#    Updated: 2023/05/13 12:37:35 by hael-mou         ###   ########.fr        #
+#    Updated: 2023/05/13 13:48:19 by hael-mou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 # Command :
 CC			=	cc
 RM			=	rm -rf
-CFLAGS		=	 -g -Wall -Wextra -Werror -fsanitize=thread
+CFLAGS		=	 -g -Wall -Wextra -Werror #-fsanitize=thread
 INCLUDE		=	-I include
 
 # Colors :

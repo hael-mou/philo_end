@@ -6,7 +6,7 @@
 /*   By: hael-mou <hael-mou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:13:16 by hael-mou          #+#    #+#             */
-/*   Updated: 2023/05/13 11:22:46 by hael-mou         ###   ########.fr       */
+/*   Updated: 2023/05/13 13:46:59 by hael-mou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,19 @@ void	clean_table(void)
 		return ;
 	sem_close(get_table()->forks);
 	sem_close(get_table()->screen);
+	if (get_table()->philos != NULL)
+	{
+		while (++index < get_table()->number_of_philo)
+		{
+			sem_close(get_table()->philos[index].meal_ate.lock);
+			sem_close(get_table()->philos[index].last_meal.lock);
+			sem_unlink(get_table()->philos[index].meal_ate.name);
+			sem_unlink(get_table()->philos[index].last_meal.name);
+			free(get_table()->philos[index].meal_ate.name);
+			free(get_table()->philos[index].last_meal.name);
+		}
+	}
 	free(get_table()->philos);
 	sem_unlink("/forks");
 	sem_unlink("/screen");
-	sem_unlink("/meal_ate");
-	sem_unlink("/last_meal");
 }
